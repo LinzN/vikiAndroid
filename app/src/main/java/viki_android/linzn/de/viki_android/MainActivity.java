@@ -1,14 +1,17 @@
 package viki_android.linzn.de.viki_android;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.view.WindowManager;
-import android.webkit.WebView;
 import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
 import de.linzn.vikiAndroid.VikiAndroid;
 
@@ -16,7 +19,7 @@ public class MainActivity extends Activity {
     private static VikiAndroid vikiAndroid;
     public TextView vikiInput;
     public TextView vikiOutput;
-    public WebView vikiLogo;
+    public ImageView vikiImage;
     public ImageSwitcher imageSwitcher;
 
 
@@ -35,6 +38,7 @@ public class MainActivity extends Activity {
         setupInPutView();
         setupOutPutView();
         setupWebView();
+        test();
         setupVikiMode();
     }
 
@@ -47,18 +51,23 @@ public class MainActivity extends Activity {
     }
 
     private void setupWebView() {
-        vikiLogo = (WebView) findViewById(R.id.webclient1);
-        vikiLogo.setOnTouchListener((view, motionEvent) -> {
-            vikiOutput.setText("I´m listening...");
-            return false;
-        });
-        vikiLogo.loadUrl("http://viki.lan");
+        vikiImage = findViewById(R.id.vikiLogo);
+        vikiImage.setOnClickListener(view -> vikiOutput.setText("I´m listening..."));
         imageSwitcher = findViewById(R.id.connectionStatus);
     }
 
     private void setupVikiMode() {
         vikiAndroid = new VikiAndroid(this);
         vikiAndroid.start_VikiAndroid();
+    }
+
+    private void test() {
+        CircularProgressBar circularProgressBar1 = (CircularProgressBar) findViewById(R.id.ring1);
+        circularProgressBar1.setProgressWithAnimation(70, 5000); // Default duration = 1500ms
+        circularProgressBar1.setBackgroundColor(Color.TRANSPARENT);
+        CircularProgressBar circularProgressBar2 = (CircularProgressBar) findViewById(R.id.ring2);
+        circularProgressBar2.setProgressWithAnimation(80, 10000); // Default duration = 1500ms
+        circularProgressBar2.setBackgroundColor(Color.TRANSPARENT);
     }
 
     public void updateOutputView(int time, String text) {

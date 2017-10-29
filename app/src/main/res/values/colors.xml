@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="vikiGrau">#1f1f1f</color>
+    <color name="ring1">#cdb3b3b3</color>
+    <color name="ring2">#cd02feff</color>
 </resources>

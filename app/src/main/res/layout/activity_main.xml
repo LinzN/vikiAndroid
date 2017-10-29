@@ -19,10 +19,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webclient1"
+        app:layout_constraintTop_toBottomOf="@+id/ring1"
         app:layout_constraintVertical_bias="0.3" />
 
-    <WebView
+    <!--<WebView
         android:id="@+id/webclient1"
         android:layout_width="290dp"
         android:layout_height="290dp"
@@ -32,7 +32,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.36">
+
+    </WebView>-->
 
     <TextView
         android:id="@+id/vikiOutput"
@@ -45,8 +47,48 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webclient1"
+        app:layout_constraintTop_toBottomOf="@+id/ring1"
         app:layout_constraintVertical_bias="0.65999997" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/ring1"
+        android:layout_width="290dp"
+        android:layout_height="290dp"
+        app:cpb_background_progressbar_color="@android:color/darker_gray"
+        app:cpb_background_progressbar_width="0dp"
+        app:cpb_progressbar_color="@color/ring1"
+        app:cpb_progressbar_width="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36" />
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/ring2"
+        android:layout_width="210dp"
+        android:layout_height="210dp"
+        app:cpb_background_progressbar_color="@android:color/darker_gray"
+        app:cpb_background_progressbar_width="0dp"
+        app:cpb_progressbar_color="@color/ring2"
+        app:cpb_progressbar_width="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/ring1"
+        app:layout_constraintEnd_toEndOf="@id/ring1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/ring1"
+        app:layout_constraintTop_toTopOf="@id/ring1" />
+
+    <ImageView
+        android:id="@+id/vikiLogo"
+        android:layout_width="160dp"
+        android:layout_height="170dp"
+        android:src="@mipmap/viki_logo_center"
+        app:layout_constraintBottom_toBottomOf="@id/ring2"
+        app:layout_constraintEnd_toEndOf="@id/ring2"
+        app:layout_constraintStart_toStartOf="@id/ring2"
+        app:layout_constraintTop_toTopOf="@id/ring2" />
+
 
     <TextClock
         android:id="@+id/textClock"
@@ -73,4 +115,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.00999999" />
+
+
 </android.support.constraint.ConstraintLayout>

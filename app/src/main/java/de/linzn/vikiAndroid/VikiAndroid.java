@@ -30,7 +30,7 @@ public class VikiAndroid {
     }
 
     private void registerEvents() {
-        jClientConnection.registerIncomingDataListener("defaultChannel", new DataInputChannelDefault());
+        jClientConnection.registerIncomingDataListener("voiceChannel", new DataInputChannelDefault(this));
         jClientConnection.registerConnectionListener(new ConnectionChanges(this));
     }
 
