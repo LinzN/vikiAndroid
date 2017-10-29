@@ -7,12 +7,17 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
+import android.widget.ImageSwitcher;
 import android.widget.TextView;
 
+import de.linzn.vikiAndroid.VikiAndroid;
+
 public class MainActivity extends Activity {
+    private static VikiAndroid vikiAndroid;
     public TextView vikiInput;
     public TextView vikiOutput;
     public WebView vikiLogo;
+    public ImageSwitcher imageSwitcher;
 
 
     @Override
@@ -46,10 +51,12 @@ public class MainActivity extends Activity {
             }
         });
         vikiLogo.loadUrl("http://viki.lan");
+        imageSwitcher = findViewById(R.id.connectionStatus);
     }
 
     private void setupVikiMode() {
-
+        vikiAndroid = new VikiAndroid(this);
+        vikiAndroid.start_VikiAndroid();
     }
 
 }
