@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/defaultLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vikiGrau"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/vikiInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Speech viki input"
+        android:textColor="?android:attr/textColorHintInverse"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/webclient1"
+        app:layout_constraintVertical_bias="0.3" />
+
+    <WebView
+        android:id="@+id/webclient1"
+        android:layout_width="290dp"
+        android:layout_height="290dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36" />
+
+    <TextView
+        android:id="@+id/vikiOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Viki default output"
+        android:textColor="?android:attr/textColorHintInverse"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/webclient1"
+        app:layout_constraintVertical_bias="0.65999997" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10:20 Uhr"
+        android:textColor="?android:attr/textColorHintInverse"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07999998" />
+</android.support.constraint.ConstraintLayout>
