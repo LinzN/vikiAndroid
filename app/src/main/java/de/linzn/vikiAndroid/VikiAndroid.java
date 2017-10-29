@@ -34,10 +34,6 @@ public class VikiAndroid {
         jClientConnection.registerConnectionListener(new ConnectionChanges(this));
     }
 
-    public void setOutputText(String text) {
-        new Handler(Looper.getMainLooper()).post(() -> mainActivity.vikiOutput.setText(text));
-    }
-
     private void checkStatusInfo() {
         Runnable runnable = () -> {
             while (true) {
