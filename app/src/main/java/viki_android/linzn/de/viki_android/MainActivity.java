@@ -64,10 +64,17 @@ public class MainActivity extends Activity {
     private void test() {
         CircularProgressBar circularProgressBar1 = (CircularProgressBar) findViewById(R.id.ring1);
         circularProgressBar1.setProgressWithAnimation(70, 5000); // Default duration = 1500ms
-        circularProgressBar1.setBackgroundColor(Color.TRANSPARENT);
+        circularProgressBar1.setRotation(20);
+
         CircularProgressBar circularProgressBar2 = (CircularProgressBar) findViewById(R.id.ring2);
-        circularProgressBar2.setProgressWithAnimation(80, 10000); // Default duration = 1500ms
+        circularProgressBar2.setProgressWithAnimation(60, 10000); // Default duration = 1500ms
         circularProgressBar2.setBackgroundColor(Color.TRANSPARENT);
+        circularProgressBar2.setRotation(60);
+
+        CircularProgressBar circularProgressBar3 = (CircularProgressBar) findViewById(R.id.ring3);
+        circularProgressBar3.setProgressWithAnimation(100, 1000); // Default duration = 1500ms
+        circularProgressBar3.setBackgroundColor(Color.TRANSPARENT);
+        circularProgressBar3.setRotation(90);
     }
 
     public void updateOutputView(int time, String text) {

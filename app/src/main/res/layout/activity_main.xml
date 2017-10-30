@@ -54,10 +54,10 @@
         android:id="@+id/ring1"
         android:layout_width="290dp"
         android:layout_height="290dp"
-        app:cpb_background_progressbar_color="@android:color/darker_gray"
-        app:cpb_background_progressbar_width="0dp"
-        app:cpb_progressbar_color="@color/ring1"
-        app:cpb_progressbar_width="10dp"
+        app:cpb_background_progressbar_color="@color/ring2"
+        app:cpb_background_progressbar_width="1dp"
+        app:cpb_progressbar_color="@color/ring2"
+        app:cpb_progressbar_width="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -67,10 +67,10 @@
 
     <com.mikhaellopez.circularprogressbar.CircularProgressBar
         android:id="@+id/ring2"
-        android:layout_width="210dp"
-        android:layout_height="210dp"
-        app:cpb_background_progressbar_color="@android:color/darker_gray"
-        app:cpb_background_progressbar_width="0dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        app:cpb_background_progressbar_color="@color/ring2"
+        app:cpb_background_progressbar_width="2dp"
         app:cpb_progressbar_color="@color/ring2"
         app:cpb_progressbar_width="15dp"
         app:layout_constraintBottom_toBottomOf="@id/ring1"
@@ -79,15 +79,30 @@
         app:layout_constraintStart_toStartOf="@id/ring1"
         app:layout_constraintTop_toTopOf="@id/ring1" />
 
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/ring3"
+        android:layout_width="190dp"
+        android:layout_height="190dp"
+        app:cpb_background_progressbar_color="@color/ring2"
+        app:cpb_background_progressbar_width="1dp"
+        app:cpb_progressbar_color="@color/ring2"
+        app:cpb_progressbar_width="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/ring2"
+        app:layout_constraintEnd_toEndOf="@id/ring2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/ring2"
+        app:layout_constraintTop_toTopOf="@id/ring2" />
+
     <ImageView
         android:id="@+id/vikiLogo"
         android:layout_width="160dp"
-        android:layout_height="170dp"
+        android:layout_height="160dp"
         android:src="@mipmap/viki_logo_center"
-        app:layout_constraintBottom_toBottomOf="@id/ring2"
-        app:layout_constraintEnd_toEndOf="@id/ring2"
-        app:layout_constraintStart_toStartOf="@id/ring2"
-        app:layout_constraintTop_toTopOf="@id/ring2" />
+        app:layout_constraintBottom_toBottomOf="@id/ring3"
+        app:layout_constraintEnd_toEndOf="@id/ring3"
+        app:layout_constraintStart_toStartOf="@id/ring3"
+        app:layout_constraintTop_toTopOf="@id/ring3"
+        app:layout_constraintVertical_bias="0.7" />
 
 
     <TextClock
