@@ -9,7 +9,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/vikiInput"
+        android:id="@+id/speechInputView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Speech viki input"
@@ -37,7 +37,7 @@
     </WebView>-->
 
     <TextView
-        android:id="@+id/vikiOutput"
+        android:id="@+id/infoView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Viki default output"
@@ -54,9 +54,9 @@
         android:id="@+id/ring1"
         android:layout_width="290dp"
         android:layout_height="290dp"
-        app:cpb_background_progressbar_color="@color/ring2"
+        app:cpb_background_progressbar_color="@color/ringOrange"
         app:cpb_background_progressbar_width="1dp"
-        app:cpb_progressbar_color="@color/ring2"
+        app:cpb_progressbar_color="@color/ringOrange"
         app:cpb_progressbar_width="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,9 +69,9 @@
         android:id="@+id/ring2"
         android:layout_width="250dp"
         android:layout_height="250dp"
-        app:cpb_background_progressbar_color="@color/ring2"
+        app:cpb_background_progressbar_color="@color/ringOrange"
         app:cpb_background_progressbar_width="2dp"
-        app:cpb_progressbar_color="@color/ring2"
+        app:cpb_progressbar_color="@color/ringOrange"
         app:cpb_progressbar_width="15dp"
         app:layout_constraintBottom_toBottomOf="@id/ring1"
         app:layout_constraintEnd_toEndOf="@id/ring1"
@@ -83,9 +83,9 @@
         android:id="@+id/ring3"
         android:layout_width="190dp"
         android:layout_height="190dp"
-        app:cpb_background_progressbar_color="@color/ring2"
+        app:cpb_background_progressbar_color="@color/ringOrange"
         app:cpb_background_progressbar_width="1dp"
-        app:cpb_progressbar_color="@color/ring2"
+        app:cpb_progressbar_color="@color/ringOrange"
         app:cpb_progressbar_width="10dp"
         app:layout_constraintBottom_toBottomOf="@id/ring2"
         app:layout_constraintEnd_toEndOf="@id/ring2"
@@ -122,14 +122,41 @@
 
     <ImageSwitcher
         android:id="@+id/connectionStatus"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.99"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.00999999" />
+
+    <TextView
+        android:id="@+id/osLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="legianOS"
+        android:textColor="?android:attr/textColorHintInverse"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998" />
+
+    <TextView
+        android:id="@+id/osVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0.0.0"
+        android:textColor="?android:attr/textColorHintInverse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01999998" />
 
 
 </android.support.constraint.ConstraintLayout>
