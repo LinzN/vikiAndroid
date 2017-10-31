@@ -22,20 +22,6 @@
         app:layout_constraintTop_toBottomOf="@+id/ring1"
         app:layout_constraintVertical_bias="0.3" />
 
-    <!--<WebView
-        android:id="@+id/webclient1"
-        android:layout_width="290dp"
-        android:layout_height="290dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36">
-
-    </WebView>-->
-
     <TextView
         android:id="@+id/infoView"
         android:layout_width="wrap_content"
@@ -135,7 +121,7 @@
         android:id="@+id/osLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="leegian OS"
+        android:text="leegianOS"
         android:textColor="?android:attr/textColorHintInverse"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
