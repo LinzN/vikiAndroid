@@ -12,7 +12,7 @@ import viki_android.linzn.de.viki_android.MainActivity;
 
 public class VikiAndroid {
     public MainActivity mainActivity;
-    private JClientConnection jClientConnection;
+    public JClientConnection jClientConnection;
     private boolean old_online_status = false;
 
     public VikiAndroid(MainActivity mainActivity) {
@@ -41,10 +41,7 @@ public class VikiAndroid {
             @Override
             public void run() {
                 handler.post(() -> {
-                    if (old_online_status != jClientConnection.isValidConnection()) {
-                        mainActivity.setGuiOnline(jClientConnection.isValidConnection());
-                        old_online_status = jClientConnection.isValidConnection();
-                    }
+                    mainActivity.guiOptions.setGuiOnline(jClientConnection.isValidConnection());
                 });
             }
         }, 0, 200);
