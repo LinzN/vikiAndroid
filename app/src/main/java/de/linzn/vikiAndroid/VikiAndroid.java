@@ -8,6 +8,7 @@ import java.util.TimerTask;
 import de.linzn.jSocket.client.JClientConnection;
 import de.linzn.vikiAndroid.listeners.ConnectionChanges;
 import de.linzn.vikiAndroid.listeners.DataInputChannelDefault;
+import de.linzn.vikiAndroid.listeners.DataInputChannelLeegianOS;
 import viki_android.linzn.de.viki_android.MainActivity;
 
 public class VikiAndroid {
@@ -32,6 +33,7 @@ public class VikiAndroid {
 
     private void registerEvents() {
         jClientConnection.registerIncomingDataListener("voiceChannel", new DataInputChannelDefault(this));
+        jClientConnection.registerIncomingDataListener("leegianOSData", new DataInputChannelLeegianOS(this));
         jClientConnection.registerConnectionListener(new ConnectionChanges(this));
     }
 
