@@ -13,6 +13,10 @@ import android.widget.TextView;
 
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import de.linzn.jSocket.core.TaskRunnable;
 import de.linzn.vikiAndroid.VikiAndroid;
 import de.linzn.vikiAndroid.listeners.LogoClickListener;
 
@@ -65,32 +69,36 @@ public class MainActivity extends Activity {
         this.ringSpeed1 = 1.5F;
         this.ringSpeed2 = -0.8F;
 
-        new Thread(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                new Handler(Looper.getMainLooper()).post(() -> this.circularProgressBar1.setRotation(this.circularProgressBar1.getRotation() + this.ringSpeed1));
-                new Handler(Looper.getMainLooper()).post(() -> this.circularProgressBar2.setRotation(this.circularProgressBar2.getRotation() + this.ringSpeed2));
+        Handler handler = new Handler();
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                handler.post(() -> {
+                    new Handler(Looper.getMainLooper()).post(() -> circularProgressBar1.setRotation(circularProgressBar1.getRotation() + ringSpeed1));
+                    new Handler(Looper.getMainLooper()).post(() -> circularProgressBar2.setRotation(circularProgressBar2.getRotation() + ringSpeed2));
+                });
             }
-        }).start();
+        }, 0, 10);
     }
 
     /* Change Gui state things */
     public synchronized void setInfoView(int time, String text) {
-        new Thread(() -> {
-            new Handler(Looper.getMainLooper()).post(() -> this.infoView.setText(text));
-            CharSequence charNew = this.infoView.getText();
+        new TaskRunnable().runSingleThreadExecutor(() -> {
+            new Handler(Looper.getMainLooper()).post(() -> {
+                this.setGuiWorking(true);
+                this.infoView.setText(text);
+            });
             try {
                 Thread.sleep(time * 1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            new Handler(Looper.getMainLooper()).post(() -> this.infoView.setText(""));
+            new Handler(Looper.getMainLooper()).post(() -> {
+                this.setGuiWorking(false);
+                this.infoView.setText("");
+            });
 
-        }).start();
+        });
     }
 
     public synchronized void setGuiOnline(boolean value) {
@@ -114,6 +122,14 @@ public class MainActivity extends Activity {
                 this.ringSpeed1 = 0.3F;
                 this.ringSpeed2 = -0.1F;
             });
+        }
+    }
+
+    public synchronized void setGuiWorking(boolean value) {
+        if (value) {
+            this.ringSpeed2 = -3.2F;
+        } else {
+            this.ringSpeed2 = -0.8F;
         }
     }
 

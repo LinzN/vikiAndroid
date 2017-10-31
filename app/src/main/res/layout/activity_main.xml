@@ -135,7 +135,7 @@
         android:id="@+id/osLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="legianOS"
+        android:text="leegian OS"
         android:textColor="?android:attr/textColorHintInverse"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
