@@ -1,6 +1,7 @@
 package de.linzn.vikiAndroid.speech.activeRec;
 
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 
 import java.io.File;
@@ -11,10 +12,10 @@ import edu.cmu.pocketsphinx.SpeechRecognizerSetup;
 import viki_android.linzn.de.viki_android.MainActivity;
 
 public class ActiveSpeech {
-    static final String KWS_SEARCH = "wakeup";
     static final String KEYPHRASE = "hey viki";
-    public boolean isActive;
+    private static final String KWS_SEARCH = "wakeup";
     MainActivity mainActivity;
+    private boolean isActive;
     private edu.cmu.pocketsphinx.SpeechRecognizer sphinxSpeechRecognizer;
 
 
@@ -38,6 +39,7 @@ public class ActiveSpeech {
     }
 
 
+    @SuppressLint("StaticFieldLeak")
     private void runRecognizerSetup() {
 
         new AsyncTask<Void, Void, Exception>() {
@@ -56,7 +58,7 @@ public class ActiveSpeech {
                     speechRecognizerSetup.setDictionary(new File(assetDir, "cmudict-en-us.dict"));
 
                     // Threshold to tune for keyphrase to balance between false alarms and misses
-                    speechRecognizerSetup.setKeywordThreshold(1e-45f);
+                    speechRecognizerSetup.setKeywordThreshold(1e-30F);
 
                     //Creates a new SpeechRecognizer object based on previous set up.
                     sphinxSpeechRecognizer = speechRecognizerSetup.getRecognizer();
