@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import de.linzn.jSocket.core.IncomingDataListener;
 import de.linzn.vikiAndroid.VikiAndroid;
-import de.linzn.vikiAndroid.VikiSound;
 
 public class DataInputChannelDefault implements IncomingDataListener {
 
@@ -18,7 +17,7 @@ public class DataInputChannelDefault implements IncomingDataListener {
     @Override
     public void onEvent(String channel, UUID clientUUID, byte[] dataInBytes) {
         System.out.println("Receive Voice");
-        new VikiSound(this.vikiAndroid).playSoundFromBytes(dataInBytes);
+        this.vikiAndroid.soundOutput.playSounds(dataInBytes);
     }
 
 
