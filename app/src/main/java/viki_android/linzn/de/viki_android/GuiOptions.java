@@ -29,18 +29,12 @@ public class GuiOptions {
         UUID refInfoViewUUID = UUID.randomUUID();
         this.uuidForInfoView = refInfoViewUUID;
         handler.post(() -> {
-            if (setWorking) {
-                this.setGuiWorking(true);
-            }
             mainActivity.infoView.setText(text);
         });
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
                 handler.post(() -> {
-                    if (setWorking) {
-                        setGuiWorking(false);
-                    }
                     if (uuidForInfoView == refInfoViewUUID) {
                         mainActivity.infoView.setText("");
                     }
@@ -52,38 +46,61 @@ public class GuiOptions {
     public synchronized void setGuiOnline(boolean value) {
         if (this.mainActivity.isDestroyed == value) {
             if (value) {
-                new Handler(Looper.getMainLooper()).post(() -> {
-                    mainActivity.isDestroyed = false;
-                    mainActivity.imageSwitcher.setBackgroundColor(Color.GREEN);
-                    mainActivity.circularRing1.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
-                    mainActivity.circularRing1.setBackgroundColor(mainActivity.getResources().getColor(R.color.ringOrange));
-                    mainActivity.circularRing2.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
-                    mainActivity.circularRing3.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
-                    mainActivity.currentRingSpeed1 = mainActivity.fixedRingSpeed1;
-                    mainActivity.currentRingSpeed2 = mainActivity.fixedRingSpeed2;
-                });
+                mainActivity.isDestroyed = false;
+                this.setGuiState(0);
             } else {
-                new Handler(Looper.getMainLooper()).post(() -> {
-                    mainActivity.isDestroyed = true;
-                    mainActivity.imageSwitcher.setBackgroundColor(Color.RED);
-                    mainActivity.circularRing1.setColor(Color.GRAY);
-                    mainActivity.circularRing1.setBackgroundColor(Color.GRAY);
-                    mainActivity.circularRing2.setColor(Color.GRAY);
-                    mainActivity.circularRing3.setColor(Color.GRAY);
-                    mainActivity.currentRingSpeed1 = mainActivity.fixedRingSpeed1 * -0.1F;
-                    mainActivity.currentRingSpeed2 = mainActivity.fixedRingSpeed2 * -0.1F;
-                });
+                mainActivity.isDestroyed = true;
+                this.setGuiState(1);
             }
         }
     }
 
-    public synchronized void setGuiWorking(boolean value) {
-        if (!mainActivity.isDestroyed) {
-            if (value) {
-                mainActivity.currentRingSpeed2 = mainActivity.fixedRingSpeed2 * 2.5F;
-            } else {
+
+    public synchronized void setGuiState(int mode) {
+        switch (mode) {
+            case 0: //default state (active listening)
+                System.out.println("guiState 0");
+                mainActivity.imageSwitcher.setBackgroundColor(Color.GREEN);
+                mainActivity.circularRing1.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.circularRing1.setBackgroundColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.circularRing2.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.circularRing3.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.currentRingSpeed1 = mainActivity.fixedRingSpeed1;
                 mainActivity.currentRingSpeed2 = mainActivity.fixedRingSpeed2;
-            }
+                break;
+            case 1: //offline state (disconnected)
+                System.out.println("guiState 1");
+                mainActivity.imageSwitcher.setBackgroundColor(Color.RED);
+                mainActivity.circularRing1.setColor(Color.GRAY);
+                mainActivity.circularRing1.setBackgroundColor(Color.GRAY);
+                mainActivity.circularRing2.setColor(Color.GRAY);
+                mainActivity.circularRing3.setColor(Color.GRAY);
+                mainActivity.currentRingSpeed1 = mainActivity.fixedRingSpeed1 * -0.1F;
+                mainActivity.currentRingSpeed2 = mainActivity.fixedRingSpeed2 * -0.1F;
+                break;
+            case 2: //passive state (listening input)
+                System.out.println("guiState 2");
+                mainActivity.imageSwitcher.setBackgroundColor(Color.GREEN);
+                mainActivity.circularRing1.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.circularRing1.setBackgroundColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.circularRing2.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.circularRing3.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.currentRingSpeed1 = mainActivity.fixedRingSpeed1;
+                mainActivity.currentRingSpeed2 = mainActivity.fixedRingSpeed2 * 5.5F;
+                break;
+            case 3: //sound state (playback speech output)
+                System.out.println("guiState 3");
+                mainActivity.imageSwitcher.setBackgroundColor(Color.GREEN);
+                mainActivity.circularRing1.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.circularRing1.setBackgroundColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.circularRing2.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.circularRing3.setColor(mainActivity.getResources().getColor(R.color.ringOrange));
+                mainActivity.currentRingSpeed1 = mainActivity.fixedRingSpeed1 * -0.7F;
+                mainActivity.currentRingSpeed2 = mainActivity.fixedRingSpeed2 * -0.7F;
+                break;
+            default:
+                this.setGuiState(0);
+                break;
         }
     }
 

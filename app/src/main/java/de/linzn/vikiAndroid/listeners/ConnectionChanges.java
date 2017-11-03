@@ -16,12 +16,12 @@ public class ConnectionChanges implements ConnectionListener {
     @Override
     public void onConnectEvent(UUID clientUUID) {
         System.out.println("Connected to Viki framework");
-        vikiAndroid.mainActivity.guiOptions.setInfoView(2, "Connected to Viki framework", false);
+        vikiAndroid.mainActivity.guiOptions.setInfoView(2, "Connected to Viki on LeegianOS", false);
     }
 
     @Override
     public void onDisconnectEvent(UUID clientUUID) {
         System.out.println("Disconnected from Viki framework");
-        vikiAndroid.mainActivity.guiOptions.setInfoView(2, "Disconnected from Viki framework", false);
+        vikiAndroid.mainActivity.guiOptions.setInfoView(2, "Disconnected from Viki on LeegianOS", false);
     }
 }

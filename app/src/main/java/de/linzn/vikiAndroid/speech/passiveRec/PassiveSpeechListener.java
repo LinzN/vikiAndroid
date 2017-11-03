@@ -69,6 +69,7 @@ public class PassiveSpeechListener implements RecognitionListener {
             e.printStackTrace();
         }
         this.passiveSpeech.mainActivity.vikiAndroid.jClientConnection.writeOutput("terminalChannel", byteOut.toByteArray());
+        this.passiveSpeech.mainActivity.guiOptions.setInfoView(3, result.get(0), false);
         this.passiveSpeech.mainActivity.vikiAndroid.setSpeechMode(1);
     }
 

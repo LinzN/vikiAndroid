@@ -12,7 +12,7 @@ import edu.cmu.pocketsphinx.SpeechRecognizerSetup;
 import viki_android.linzn.de.viki_android.MainActivity;
 
 public class ActiveSpeech {
-    static final String KEYPHRASE = "hey viki";
+    static final String KEYPHRASE = "viki";
     private static final String KWS_SEARCH = "wakeup";
     MainActivity mainActivity;
     private boolean isActive;
@@ -58,7 +58,7 @@ public class ActiveSpeech {
                     speechRecognizerSetup.setDictionary(new File(assetDir, "cmudict-en-us.dict"));
 
                     // Threshold to tune for keyphrase to balance between false alarms and misses
-                    speechRecognizerSetup.setKeywordThreshold(1e-30F);
+                    speechRecognizerSetup.setKeywordThreshold(1e-4F);
 
                     //Creates a new SpeechRecognizer object based on previous set up.
                     sphinxSpeechRecognizer = speechRecognizerSetup.getRecognizer();

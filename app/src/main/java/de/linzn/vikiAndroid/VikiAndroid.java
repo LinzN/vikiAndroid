@@ -65,17 +65,20 @@ public class VikiAndroid {
         switch (mode) {
             case 0:
                 System.out.println("SpeechMode disable");
+                this.mainActivity.guiOptions.setGuiState(3);
                 this.activeSpeech.stopListening();
                 this.passiveSpeech.stopListening();
                 break;
             case 1:
                 System.out.println("SpeechMode active");
+                this.mainActivity.guiOptions.setGuiState(0);
                 this.activeSpeech.stopListening();
                 this.passiveSpeech.stopListening();
                 this.activeSpeech.startListening();
                 break;
             case 2:
                 System.out.println("SpeechMode passive");
+                this.mainActivity.guiOptions.setGuiState(2);
                 this.passiveSpeech.stopListening();
                 this.activeSpeech.stopListening();
                 this.passiveSpeech.startListening();
@@ -83,6 +86,7 @@ public class VikiAndroid {
             default:
                 System.out.println("SpeechMode unknown");
                 this.setSpeechMode(0);
+                break;
         }
     }
 }
