@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageSwitcher;
@@ -79,8 +81,10 @@ public class MainActivity extends Activity {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
+                new Handler(Looper.getMainLooper()).post(() -> {
                     circularRing1.setRotation(circularRing1.getRotation() + currentRingSpeed1);
                     circularRing2.setRotation(circularRing2.getRotation() + currentRingSpeed2);
+                });
             }
         }, 0, 10);
     }
