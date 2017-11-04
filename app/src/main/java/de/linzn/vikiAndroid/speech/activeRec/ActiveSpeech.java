@@ -58,7 +58,7 @@ public class ActiveSpeech {
                     speechRecognizerSetup.setDictionary(new File(assetDir, "cmudict-en-us.dict"));
 
                     // Threshold to tune for keyphrase to balance between false alarms and misses
-                    speechRecognizerSetup.setKeywordThreshold(1e-6F);
+                    speechRecognizerSetup.setKeywordThreshold(1e-3F);
 
                     //Creates a new SpeechRecognizer object based on previous set up.
                     sphinxSpeechRecognizer = speechRecognizerSetup.getRecognizer();

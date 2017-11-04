@@ -20,7 +20,7 @@ public class SoundOutput {
 
     }
 
-    public void playSounds(byte[] dataInBytes) {
+    public void playSounds(byte[] dataInBytes, boolean needResponse) {
 
         try {
             mediaPlayer.reset();
@@ -32,7 +32,11 @@ public class SoundOutput {
             mediaPlayer.setDataSource(new FileInputStream(tempFile).getFD());
             mediaPlayer.setOnCompletionListener(mediaPlayer -> {
                 System.out.println("Sound complete");
-                this.mainActivity.vikiAndroid.setSpeechMode(1);
+                if (needResponse) {
+                    this.mainActivity.vikiAndroid.setSpeechMode(2);
+                } else {
+                    this.mainActivity.vikiAndroid.setSpeechMode(1);
+                }
             });
             mediaPlayer.setOnPreparedListener(mediaPlayer -> {
                 System.out.println("Sound prepare");
